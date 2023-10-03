@@ -1,0 +1,60 @@
+# SPDX-FileCopyrightText: : 2017-2023 The PyPSA-Eur Authors
+#
+# SPDX-License-Identifier: CC0-1.0
+
+tutorial: false
+
+
+run:
+  name: "elec" # use this to keep track of runs with different settings
+  disable_progressbar: true
+  shared_resources: true
+  shared_cutouts: true
+
+scenario:
+  simpl:
+  - ''
+  ll:
+  - v1.5
+  clusters:
+#  - 37
+  - 128
+  - 256
+  - 512
+  - 1024
+  opts:
+  - 'CO2L' #-4380SEG
+  planning_horizons:
+  # - 2020
+  # - 2030
+  # - 2040
+  - 2050
+
+#countries: ['BE','DE']
+
+#snapshots:
+#  start: "2013-03-01"
+#  end: "2013-03-08"
+
+electricity:
+  co2limit: 0
+
+clustering:
+  exclude_carriers: [solar, onwind, offwind-ac, offwind-dc, hydro]
+
+solving:
+  solver:
+    name: gurobi
+    options: "gurobi-default"
+
+plotting:
+  map:
+    boundaries:
+  eu_node_location:
+    x: -5.5
+    y: 46.
+  costs_max: 1000
+  costs_threshold: 0.0000001
+  energy_max:
+  energy_min:
+  energy_threshold: 0.000001
