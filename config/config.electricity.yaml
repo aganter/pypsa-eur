@@ -18,12 +18,12 @@ scenario:
   - v1.5
   clusters:
 #  - 37
-  - 128
-  - 256
-  - 512
+#  - 128
+#  - 256
+#  - 512
   - 1024
   opts:
-  - 'CO2L' #-4380SEG
+  - 'CO2L-4380SEG' #-4380SEG
   planning_horizons:
   # - 2020
   # - 2030

@@ -16,6 +16,7 @@ class RedispatchModel:
         self.run_network_model()
         self.run_market_model()
         self.run_redispatch_model()
+        self.compute_curtailement()
 
     def set_folder_paths(self, folder_path):
         """set folder path with subfolder structure"""
@@ -91,7 +92,6 @@ class RedispatchModel:
 
     def run_redispatch_model(self):
         """build redispatch model"""
-        assert hasattr(self, "network_model"), "run network model first"
         assert hasattr(self, "market_model"), "run market model first"
         self.redispatch_model = self.model.copy()
 
@@ -130,6 +130,11 @@ class RedispatchModel:
         # self.redispatch_model.generators.loc[self.redispatch_model.index.str.contains("ramp down"), "marginal_cost"] *= -0.5
         # hence, outcome should be more expensive than in ideal nodal market
         # self.redispatch_model.optimize(solver_name=self.solver, solver_options=self.solver_default)
+
+    def compute_curtailment(self):
+        """compute electricity curtailment for wind and solar"""
+        assert hasattr(self, "redispatch_model"), "run market and redispatch model first"
+        a=1
 
 if __name__ == "__main__":
     # model = "elec_s_6_ec_lcopt_Co2L-24H.nc"
