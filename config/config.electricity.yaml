@@ -4,7 +4,6 @@
 
 tutorial: false
 
-
 run:
   name: "elec" # use this to keep track of runs with different settings
   disable_progressbar: true
@@ -23,7 +22,7 @@ scenario:
 #  - 512
   - 1024
   opts:
-  - 'CO2L-4380SEG' #-4380SEG
+  - 'CO2L-2500SEG' #-4380SEG
   planning_horizons:
   # - 2020
   # - 2030
@@ -33,8 +32,9 @@ scenario:
 #countries: ['BE','DE']
 
 #snapshots:
-#  start: "2013-03-01"
-#  end: "2013-03-08"
+#  start: "2013-01-01"
+#  end: "2014-01-01"
+#  inclusive: 'left'
 
 electricity:
   co2limit: 0
@@ -45,7 +45,7 @@ clustering:
 solving:
   solver:
     name: gurobi
-    options: "gurobi-default"
+    options: "gurobi_numeric_focus" #"gurobi-default"
 
 plotting:
   map:
